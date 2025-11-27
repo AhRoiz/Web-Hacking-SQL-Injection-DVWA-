@@ -15,12 +15,12 @@ Menggunakan **Burp Suite (Intercepting Proxy)** untuk memanipulasi *HTTP Request
 * **Payload:** `1 OR 1=1 #`
 * **URL Encoded Payload (di Burp Suite):** `1+OR+1=1+%23`
 
-![Screenshot Burp Suite](Link_Gambar_BurpSuite.png)
+<img width="795" height="554" alt="Screenshot 2025-11-27 184816" src="https://github.com/user-attachments/assets/eada0db3-e3fc-4be3-afb3-651aed07fe9f" />
 
 **Hasil:**
 Berhasil mem-bypass restriksi UI dan filter keamanan. Database menampilkan seluruh daftar user dan password hash.
 
-![Screenshot Hasil SQLi](Link_Gambar_Hasil_SQLi.png)
+<img width="276" height="140" alt="Screenshot 2025-11-27 191025" src="https://github.com/user-attachments/assets/9b23d0f1-1530-4652-99b0-6dec7fe7c233" />
 
 ### 2. Defense Phase (Blue Team)
 
