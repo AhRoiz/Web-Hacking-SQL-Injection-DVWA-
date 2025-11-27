@@ -39,3 +39,45 @@ Kode sumber level Medium hanya melakukan sanitasi input string (`mysql_real_esca
 2.  **Prepared Statements:** Menggunakan parameterisasi query (PDO) agar input user tidak pernah dieksekusi sebagai perintah SQL.
 
 ---
+
+---
+
+## 🔐 Web Hacking: SQL Injection & Password Cracking
+**Target:** DVWA (Security Level: Medium)
+**Objective:** Mengambil alih akun administrator dengan mencuri dan memecahkan password hash database.
+
+### 1. Attack Phase (Red Team)
+
+**Tantangan (Security Obstacle):**
+Pada level Medium, aplikasi menerapkan filter `mysql_real_escape_string()` yang memblokir karakter tanda petik (`'`). Hal ini mencegah serangan SQL Injection standar berbasis teks.
+
+**Teknik Bypass:**
+Ditemukan bahwa parameter `id` tidak divalidasi sebagai angka (Integer). Dengan menggunakan **Burp Suite**, payload disuntikkan langsung ke dalam paket HTTP tanpa menggunakan tanda petik, sehingga melewati filter aplikasi.
+
+**Langkah Eksploitasi:**
+
+1.  **Enumerasi Sistem (Reconnaissance):**
+    Memastikan injeksi berhasil dengan memanggil fungsi sistem database.
+    * **Payload:** `999 UNION SELECT user(),database() #`
+    * **Hasil:** Database merespon dengan user: `root@localhost` dan nama DB: `dvwa`.
+
+2.  **Pencurian Data (Data Exfiltration):**
+    Menggunakan teknik *UNION SELECT* untuk menggabungkan hasil query asli dengan data dari tabel `users`. ID diubah menjadi `999` (invalid) agar aplikasi menampilkan data curian kita di baris pertama.
+    * **Payload (Burp Suite):**
+      ```text
+      id=999+UNION+SELECT+user,password+FROM+users+%23
+      ```
+    * **Hasil Dump:**
+      * User: `admin`
+      * Password Hash: `5f4dcc3b5aa765d61d8327deb882cf99`
+
+![Screenshot Hasil SQL Injection](Link_Gambar_Hasil_SQLi_Admin.png)
+
+### 2. Post-Exploitation (Password Cracking)
+
+Password yang didapatkan masih dalam bentuk enkripsi satu arah (MD5 Hash). Untuk mendapatkan password asli, dilakukan serangan *offline cracking* menggunakan tool **John The Ripper**.
+
+**Command:**
+```bash
+echo "5f4dcc3b5aa765d61d8327deb882cf99" > admin_pass.txt
+john --format=Raw-MD5 admin_pass.txt
