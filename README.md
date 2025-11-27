@@ -1,5 +1,3 @@
----
-
 ## 🌐 Web Hacking: SQL Injection (DVWA)
 
 **Target:** DVWA (Damn Vulnerable Web App) pada Metasploitable 2.
