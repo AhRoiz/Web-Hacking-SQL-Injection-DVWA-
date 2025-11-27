@@ -20,7 +20,10 @@ Menggunakan **Burp Suite (Intercepting Proxy)** untuk memanipulasi *HTTP Request
 **Hasil:**
 Berhasil mem-bypass restriksi UI dan filter keamanan. Database menampilkan seluruh daftar user dan password hash.
 
-<img width="276" height="140" alt="Screenshot 2025-11-27 191025" src="https://github.com/user-attachments/assets/9b23d0f1-1530-4652-99b0-6dec7fe7c233" />
+<img width="276" height="140" alt="Screenshot 2025-11-27 191025" src="https://github.com/user-attachments/assets/9b23d0f1-1530-4652-99b0-6dec7fe7c233" /> <img width="257" height="143" alt="image" src="https://github.com/user-attachments/assets/922b44c6-3f9f-46b8-b98c-34aea6a89c61" /> <img width="295" height="160" alt="image" src="https://github.com/user-attachments/assets/0c19c8ea-f15c-44a5-87fb-6f3d902df071" /> <img width="287" height="148" alt="image" src="https://github.com/user-attachments/assets/e3566215-9e7d-4589-8ac0-24848076c331" />
+
+
+
 
 ### 2. Defense Phase (Blue Team)
 
