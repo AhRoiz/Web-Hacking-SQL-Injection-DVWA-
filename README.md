@@ -89,7 +89,8 @@ john --format=Raw-MD5 admin_pass.txt
 
 <img width="636" height="299" alt="Screenshot 2025-11-27 201726" src="https://github.com/user-attachments/assets/ad47692f-bad0-4c02-b4c0-b4ea996604de" />
 
-**Defense & Remediation (Blue Team)**
+##**Defense & Remediation (Blue Team)**
+
 Analisis Kerentanan: Meskipun input string sudah disanitasi, developer gagal memvalidasi Tipe Data. Input id seharusnya hanya menerima angka murni, namun aplikasi membiarkan perintah SQL masuk.
 
 Kode Rentan (Vulnerable Code):
